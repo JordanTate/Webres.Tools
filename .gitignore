@@ -1,0 +1,39 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ww][Ii][Nn]32/
+[Xx]64/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Visual Studio workspace and user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Test output
+[Tt]est[Rr]esult*/
+*.trx
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# IDE extensions and local tooling
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+.idea/
+
+# Publish output
+publish/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Deployment.Core/Deployment.Core.csproj" Id="c4c5673a-949a-4385-ab09-9e2f7cf76472" />
+  <Project Path="Deployment.UI/Deployment.UI.csproj" Id="a7d22905-6629-4384-9d6e-a1217b396db4" />
+</Solution>

@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Deployment.UI.Views.PreDeploymentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Deployment.UI.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock
+                Text="Review"
+                FontSize="24"
+                FontWeight="SemiBold"
+                Margin="0,0,0,32" />
+
+            <TextBlock
+               Text="Please review the deployment set up. When you're ready; click 'Continue' to begin the deployment process."
+               TextWrapping="Wrap"
+               FontSize="20"
+               Margin="0,0,0,16"
+               Opacity="0.8" />
+
+            <ui:CardControl
+                HorizontalAlignment="Left"
+                Margin="0,0,0,16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Mode"
+                            Opacity="0.8"
+                            Margin="0,0,8,8"/>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{Binding Configuration.Mode}"
+                            Margin="0,0,8,8" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Version"
+                            Opacity="0.8"
+                            Margin="0,0,8,8"/>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{Binding Configuration.Version.Value}"
+                            Margin="0,0,8,8" />
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Server"
+                            Opacity="0.8"
+                            Margin="0,0,8,0"/>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{Binding Configuration.Server.Name}"
+                            Margin="0,0,8,8" />
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Database"
+                            Opacity="0.8"
+                            Margin="0,0,8,0"/>
+
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <TextBlock
+                                Text="{Binding Configuration.Connection.DatabaseName}"
+                                Margin="0,0,6,8" />
+
+                            <ui:SymbolIcon
+                                Symbol="DatabasePlugConnected20"
+                                FontSize="16"
+                                Foreground="#4CC878"
+                                VerticalAlignment="Top" />
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="128" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Website"
+                            Opacity="0.8"
+                            Margin="0,0,8,0"/>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="{Binding Configuration.Website.Name}"
+                            Margin="0,0,8,8" />
+                    </Grid>
+                </Grid>
+            </ui:CardControl>
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="1"
+            Margin="8">
+            <ui:Button
+                HorizontalAlignment="Right"
+                Click="Deploy_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        Text="Deploy"
+                        FontSize="16"
+                        Margin="0,0,8,0" />
+                    <ui:SymbolIcon Symbol="Rocket24" />
+                </StackPanel>
+            </ui:Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

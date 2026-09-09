@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="Deployment.UI.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Deployment.UI.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock
+                Text="Settings"
+                FontSize="24"
+                FontWeight="SemiBold"
+                Margin="0,0,0,32" />
+
+            <StackPanel Margin="0,0,0,16">
+                <TextBlock Text="Source" FontSize="16" Margin="0,0,0,4" />
+                <TextBox
+                    Text="{Binding UpdateSource, UpdateSourceTrigger=PropertyChanged}"
+                    Padding="4" />
+            </StackPanel>
+            <StackPanel Margin="0,0,0,16">
+                <TextBlock Text="Website Root Folder" FontSize="16" Margin="0,0,0,4" />
+                <TextBox
+                    Text="{Binding WebsiteRoot, UpdateSourceTrigger=PropertyChanged}"
+                    Padding="4" />
+            </StackPanel>
+            <StackPanel Margin="0,0,0,16">
+                <TextBlock Text="Web Servers" FontSize="16" Margin="0,0,0,4" />
+                <ListBox
+                    ItemsSource="{Binding WebServers}"
+                    Margin="0,0,0,8"
+                    MaxHeight="156">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Text="{Binding}"
+                                    VerticalAlignment="Center" />
+
+                                <ui:Button
+                                    Grid.Column="1"
+                                    Command="{Binding
+                                        RelativeSource={RelativeSource AncestorType=ListBox},
+                                        Path=DataContext.RemoveWebServerCommand}"
+                                    CommandParameter="{Binding}">
+                                    <TextBlock Text="Remove" />
+                                </ui:Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel>
+                    <TextBox
+                        Margin="0,0,0,8"
+                        Text="{Binding WebServerInput, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+                    <ui:Button
+                        Content="Add"
+                        Command="{Binding AddWebServerCommand}" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel 
+            Grid.Row="1"
+            Margin="8">
+            <ui:Button
+                HorizontalAlignment="Right"
+                Command="{Binding SaveCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        Text="Save"
+                        FontSize="16"
+                        Margin="0,0,8,0" />
+                    <ui:SymbolIcon Symbol="Save24" />
+                </StackPanel>
+            </ui:Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
